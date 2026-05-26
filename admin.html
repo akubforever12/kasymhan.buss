@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <title>Редактировать сайт</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="bg-glow bg-glow--1"></div>
+  <div class="bg-glow bg-glow--2"></div>
+  <div class="grid-overlay"></div>
+
+  <div class="admin-login" id="admin-login">
+    <div class="admin-login__box">
+      <h1>Вход</h1>
+      <p>Чтобы изменять сайт, введите логин и пароль</p>
+      <form id="login-form" class="admin-login__form" autocomplete="off">
+        <div class="admin-field">
+          <label for="login-user">Логин</label>
+          <input type="text" id="login-user" name="username" autocomplete="username" required>
+        </div>
+        <div class="admin-field">
+          <label for="login-pass">Пароль</label>
+          <input type="password" id="login-pass" name="password" autocomplete="current-password" required>
+        </div>
+        <div class="admin-field">
+          <label>Проверка анти-бот</label>
+          <div class="captcha-question" id="captcha-question"></div>
+          <input type="text" id="login-captcha" autocomplete="off" placeholder="Ответ" required>
+        </div>
+        <input type="text" id="login-honeypot" name="email" class="hidden-honeypot" autocomplete="off" tabindex="-1">
+        <p class="admin-login__error" id="login-error" hidden></p>
+        <button type="submit" id="login-submit" class="btn btn--primary admin-login__submit">Войти</button>
+      </form>
+      <a href="index.html" class="admin-login__back">← На главную</a>
+    </div>
+  </div>
+
+  <div class="admin-page" id="admin-panel">
+    <div class="admin-head">
+      <h1>Редактировать сайт</h1>
+      <p>Меняйте тексты и рейсы здесь, потом нажмите «Сохранить». Откройте главную страницу и обновите (F5).</p>
+    </div>
+    <div class="admin-actions-top">
+      <a href="index.html" class="btn btn--primary">Открыть сайт</a>
+      <button type="button" class="btn btn--whatsapp" id="btn-save">Сохранить</button>
+      <button type="button" class="btn btn--ghost" id="btn-download">Скачать для отправки</button>
+      <button type="button" class="btn btn--ghost" id="btn-reset">Сбросить всё</button>
+      <button type="button" class="btn btn--ghost" id="btn-logout" onclick="adminLogout()">Выйти</button>
+    </div>
+    <form id="admin-form">
+      <section class="admin-card"><h2>WhatsApp</h2>
+        <div class="admin-field"><label for="whatsapp">Номер (77023555998)</label><input type="text" id="whatsapp" required></div>
+      </section>
+      <section class="admin-card"><h2>Название</h2>
+        <div class="admin-field"><label for="brand-name">Заголовок</label><input type="text" id="brand-name" required></div>
+        <div class="admin-field"><label for="brand-sub">Подпись</label><input type="text" id="brand-sub"></div>
+      </section>
+      <section class="admin-card"><h2>Главный экран</h2>
+        <div class="admin-field"><label for="hero-badge">Плашка</label><input type="text" id="hero-badge"></div>
+        <div class="admin-row">
+          <div class="admin-field"><label for="hero-before">До выделения</label><input type="text" id="hero-before"></div>
+          <div class="admin-field"><label for="hero-highlight">Выделение</label><input type="text" id="hero-highlight"></div>
+        </div>
+        <div class="admin-field"><label for="hero-after">После выделения</label><input type="text" id="hero-after"></div>
+        <div class="admin-field"><label for="hero-desc">Описание</label><textarea id="hero-desc"></textarea></div>
+      </section>
+      <section class="admin-card"><h2>Главный маршрут (карточка)</h2>
+        <div class="admin-field">
+          <label for="next-route">Маршрут целиком</label>
+          <input type="text" id="next-route" placeholder="Алматы → Шымкент → ...">
+        </div>
+      </section>
+      <section class="admin-card"><h2>Направления</h2>
+        <div id="trips-list"></div>
+        <button type="button" class="btn btn--ghost" id="btn-add-trip">+ Направление</button>
+      </section>
+      <section class="admin-card"><h2>Цены</h2><div id="routes-list"></div></section>
+      <section class="admin-card"><h2>Контакты</h2>
+        <div class="admin-field"><label for="contact-title">Заголовок</label><input type="text" id="contact-title"></div>
+        <div class="admin-field"><label for="contact-text">Текст</label><textarea id="contact-text"></textarea></div>
+        <div class="admin-field"><label for="footer-text">Подвал</label><input type="text" id="footer-text"></div>
+      </section>
+    </form>
+  </div>
+  <div class="admin-toast" id="toast"></div>
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+  <script src="admin-auth.js"></script>
+</body>
+</html>

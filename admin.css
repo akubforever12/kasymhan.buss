@@ -1,0 +1,262 @@
+#admin-panel {
+  display: none;
+}
+
+body.admin-authed #admin-login {
+  display: none !important;
+}
+
+body.admin-authed #admin-panel {
+  display: block;
+}
+
+body:not(.admin-authed) #admin-panel {
+  display: none !important;
+}
+
+.admin-login {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 5%;
+}
+
+.admin-login__box {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.admin-login__box h1 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.admin-login__box > p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.admin-login__submit {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.admin-login__error {
+  color: #ff8a8a;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0.25rem 0;
+}
+
+.admin-login__back {
+  display: inline-block;
+  margin-top: 1.25rem;
+  color: var(--gold-light);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.admin-login__back:hover {
+  text-decoration: underline;
+}
+
+.captcha-question {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 0.45rem;
+  font-weight: 700;
+}
+
+.hidden-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.admin-page {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 5% 4rem;
+}
+
+.admin-head {
+  margin-bottom: 2rem;
+}
+
+.admin-head h1 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.admin-head p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.admin-actions-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.admin-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.admin-card h2 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.admin-field {
+  margin-bottom: 1rem;
+}
+
+.admin-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.admin-field input,
+.admin-field select,
+.admin-field textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.95rem;
+}
+
+.admin-field textarea {
+  min-height: 72px;
+  resize: vertical;
+}
+
+.admin-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+@media (max-width: 520px) {
+  .admin-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.trip-edit {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.trip-edit__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.trip-edit__head span {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--gold-light);
+}
+
+.btn--ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.btn--ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+.btn--danger {
+  background: rgba(220, 60, 60, 0.2);
+  border: 1px solid rgba(220, 60, 60, 0.4);
+  color: #ff8a8a;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.75rem;
+}
+
+.admin-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: var(--green-dark);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  z-index: 300;
+  transition: transform 0.3s;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.admin-toast.is-show {
+  transform: translateX(-50%) translateY(0);
+}
+
+.admin-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  line-height: 1.5;
+}
+
+.footer-admin-link {
+  margin-top: 0.5rem;
+}
+
+.footer-admin-link a {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-admin-link a:hover {
+  text-decoration: underline;
+}
